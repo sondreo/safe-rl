@@ -16,6 +16,7 @@ GYM_ENVS = {
 
 
 def create_environment(env_name):
+    """Creates instance of Gym environment."""
     env = gym.make(env_name)
 
     # Fix for certain OpenAI Gym environments,
@@ -27,8 +28,12 @@ def create_environment(env_name):
 
 
 def print_environment_info(env):
-    """Shows environment information"""
+    """Shows environment information."""
 
     print(f'Running environment: {env.unwrapped.spec.id}')
     print(f'State space format: {env.observation_space}')
     print(f'Action space format: {env.action_space}')
+
+
+if __name__ == "__main__":
+    pass

@@ -1,7 +1,7 @@
 # import gym
 from time import sleep
 
-from agent import Agent
+from agent import Agent, QLearningAgent
 from environment import GYM_ENVS, create_environment, print_environment_info
 
 
@@ -9,7 +9,9 @@ EPISODES = 500
 
 
 def run():
+    """Runs RL algorithm on selected agent in selected environment."""
     print('Running...\n')
+
     # Create and render gym environment
     env = create_environment(GYM_ENVS['classical_control'][1])
     env.render(mode='human')
@@ -17,7 +19,8 @@ def run():
     print_environment_info(env)
 
     # Create agent
-    agent = Agent(env.action_space)
+    # agent = Agent(env.action_space)
+    agent = QLearningAgent(env.action_space, 0.1)
 
     # Initialize observed state and reward signal
     observation = env.reset()
