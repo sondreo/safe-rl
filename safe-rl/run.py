@@ -1,39 +1,20 @@
-import gym
-import gym_panda    # Import registers environment in Gym
+# import gym
 from time import sleep
 
 from agent import Agent
-
-GYM_ENVS = {
-    'classical_control': [
-        'CartPole-v1',
-        'MountainCar-v0',
-        'Pendulum-v0'
-    ],
-    'panda': [
-        'panda-v0'
-    ]
-}
+from environment import GYM_ENVS, create_environment, print_environment_info
 
 
 EPISODES = 500
 
 
-def create_environment(gym_env):
-    env = gym.make(gym_env)
-
-    # Fix for certain OpenAI Gym environments,
-    # requiring to be reset prior to initial rendering
-    if gym_env in GYM_ENVS['classical_control']:
-        env.reset()
-
-    return env
-
-
 def run():
+    print('Running...\n')
     # Create and render gym environment
-    env = create_environment(GYM_ENVS['classical_control'][0])
-    env.render()
+    env = create_environment(GYM_ENVS['classical_control'][1])
+    env.render(mode='human')
+
+    print_environment_info(env)
 
     # Create agent
     agent = Agent(env.action_space)

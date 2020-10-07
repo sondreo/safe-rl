@@ -1,5 +1,3 @@
-
-
 class Agent():
     """Simple agent"""
 
