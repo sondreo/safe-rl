@@ -1,5 +1,5 @@
 import gym
-import gym_panda  # Import registers environment in Gym
+# import gym_panda  # Import registers environment in Gym
 
 
 GYM_ENVS = {
@@ -33,6 +33,19 @@ def print_environment_info(env):
     print(f'Running environment: {env.unwrapped.spec.id}')
     print(f'State space format: {env.observation_space}')
     print(f'Action space format: {env.action_space}')
+
+
+def print_all_available_environments():
+    """Prints all envs in registry."""
+
+    env_ids = [spec.id for spec in gym.envs.registry.all()]
+
+    print('All registered Gym environments:')
+
+    for env_id in sorted(env_ids):
+        print(env_id)
+
+    print()  # Add newline to end of list
 
 
 if __name__ == "__main__":
